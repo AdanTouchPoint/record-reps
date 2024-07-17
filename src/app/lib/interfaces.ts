@@ -11,8 +11,7 @@ export interface electorates {
     state: string;
   }
 export interface MainFormProps {
-   postalCode:
-   setPostalCode:
+
   }
   export interface SBprops {
     hideSB: boolean;

@@ -2,22 +2,25 @@
 import React,{FormEvent, useState} from 'react';
 import { MainFormProps } from '../lib/interfaces';
 import { checkNumber,checkBoth,checkLetter } from '../lib/helpers';
-const MainForm: React.FC<MainFormProps> = ({postalcode,setPostalCode}) => {
-
-    const click = () => {
-        if(checkBoth(postalcode)=== true) {
-            return console.log('Introduce a correct postalcode or electorate')
-        }
-        if(checkNumber(postalcode) === true ) {
-            //busqueda por postalcode en el API
-            return console.log('is postalCode')
-        }
-        if(checkLetter(postalcode)=== true ){
-            return console.log('is Electorate')
-        }
+import { getRepsByCp, getRepsByElectorate, getElectoratesByCp } from '../lib/petitions';
+const MainForm: React.FC<MainFormProps> = () => {
+const [data,setData] = useState({ postcode:'' , state: 'qlds' })
+  const click = async () => {
+    const {postcode,state}= data
+  
+    if(checkBoth(postcode)=== true) {
+      return console.log('Introduce a correct postalcode or electorate')
+    }
+    if(checkNumber(postcode) === true ) {
+      const request = await getElectoratesByCp(postcode, state)
+      return console.log('is postalCode',request)
+    }
+    if(checkLetter(postcode)=== true ) {
+       return console.log('is Electorate')
+    }
     }
     const handleOnChange = (e: FormEvent<HTMLInputElement>)  => {
-       return setPostalCode ((e.target as HTMLInputElement).value) 
+       return setData ({...data, postcode: (e.target as HTMLInputElement).value}) 
     }
 return (
 <div className="min-h-screen bg-gray-100 p-0 sm:p-12">
@@ -47,7 +50,6 @@ return (
     </form>
   </div>
 </div>
-
 	);
 };
 
