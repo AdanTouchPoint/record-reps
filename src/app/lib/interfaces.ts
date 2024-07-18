@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
-export interface electorates {
+export interface Electorate {
     division: string;
-    postalcode : string;
+    postcode : string;
   }
-  export interface reps {
+  export interface Reps {
     name: string;
     postalcode : string;
     electorate: string;
@@ -11,26 +11,18 @@ export interface electorates {
     state: string;
   }
 export interface MainFormProps {
-
+  setShowElectoratesView: (value: boolean) => void;
+  electorate: Electorate []| undefined;
+  setElectorate: Dispatch<SetStateAction<Electorate[]>>;
+  reps: Reps | undefined;
+  setReps:  Dispatch<SetStateAction<Reps>>;
   }
+  export interface ElectsView {
+    electorate: Electorate[] | undefined;
+
+    }
   export interface SBprops {
     hideSB: boolean;
     setHideSuccess: (value: boolean) => void;
   }
-  export interface APprops {
-    hideAP: boolean;
-    setHideSuccess: (value: boolean) => void;
-  }
-  export interface PDprops {
-    hidePD: boolean;
-    setHideSuccess: (value: boolean) => void;
-  }
-  export interface SuccessProps {
-    hideSuccess: boolean;
-    setHideSuccess: Dispatch<SetStateAction<boolean>>;
-  }
-  export interface GHLinks {
-    AP: string;
-    PD: string;
-    SB: string;
-  }
+

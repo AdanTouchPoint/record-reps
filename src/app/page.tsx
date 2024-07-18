@@ -1,18 +1,32 @@
 "use client";
 import React,{useState} from 'react';
 import MainForm  from "./Components/MainForm";
-//import ElectoratesView from "./Components/ElectoratesView";
-//import RepsView from './Components/RepsView';
-import { electorates, reps } from './lib/interfaces';
+import ElectoratesView from "./Components/ElectoratesView";
+import RepsView from './Components/RepsView';
+import { Electorate, Reps } from './lib/interfaces';
 
-export default function Home() {
+const Home: React.FC = () => {
+  const [electorate,setElectorate]= useState<Electorate[]>([]);
+  const [reps, setReps] = useState<Reps[]>([]);
+  const [showElectoratesView,setShowElectoratesView] = useState(false)
+  const [showRepsView,setShowRepsView] = useState(false)
+  const [showMainForm,setShowMainForm] = useState(false)
 
-  const [electorates,setElectorates]= useState<electorates>();
-  const [reps, setReps] = useState<reps>();
+
   return (
     <main>
-      <MainForm/>
+      <MainForm 
+      showElectoratesView={showElectoratesView}
+      setShowElectoratesView={setShowElectoratesView}
+      electorate={electorate}
+      setElectorate={setElectorate} 
+      reps={reps}
+      setReps={setReps}
+      />
+      {showElectoratesView && <ElectoratesView electorate={electorate}/>}
+      {showRepsView && <RepsView/>}
 
     </main>
   );
 }
+export default Home

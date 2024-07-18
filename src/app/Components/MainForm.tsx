@@ -1,22 +1,21 @@
 "use client";
 import React,{FormEvent, useState} from 'react';
-import { MainFormProps } from '../lib/interfaces';
-import { checkNumber,checkBoth,checkLetter } from '../lib/helpers';
+import { Electorate, MainFormProps } from '../lib/interfaces';
+import { checkNumber,checkBoth,checkLetter,checkElectorateAmount,setElecData } from '../lib/helpers';
 import { getRepsByCp, getRepsByElectorate, getElectoratesByCp } from '../lib/petitions';
-const MainForm: React.FC<MainFormProps> = () => {
+const MainForm: React.FC<MainFormProps> = ({setShowElectoratesView,electorate,setElectorate,reps,setReps}) => {
 const [data,setData] = useState({ postcode:'' , state: 'qlds' })
-  const click = async () => {
+  const click = async (e: FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
     const {postcode,state}= data
-  
     if(checkBoth(postcode)=== true) {
-      return console.log('Introduce a correct postalcode or electorate')
     }
     if(checkNumber(postcode) === true ) {
       const request = await getElectoratesByCp(postcode, state)
-      return console.log('is postalCode',request)
+      const payload: Electorate[] = request
+      const data = await checkElectorateAmount(payload, setShowElectoratesView,setElectorate)
     }
     if(checkLetter(postcode)=== true ) {
-       return console.log('is Electorate')
     }
     }
     const handleOnChange = (e: FormEvent<HTMLInputElement>)  => {
