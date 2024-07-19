@@ -1,10 +1,24 @@
 "use client";
 import React,{FormEvent, useState} from 'react';
 import { Electorate, MainFormProps } from '../lib/interfaces';
-import { checkNumber,checkBoth,checkLetter,checkElectorateAmount,setElecData } from '../lib/helpers';
+import { checkNumber,checkBoth,checkLetter,checkElectorateAmount } from '../lib/helpers';
 import { getRepsByCp, getRepsByElectorate, getElectoratesByCp } from '../lib/petitions';
+import {LaborPartyCandidates, LNPCandidates, greensPartyCandidate, oneNationPartyCandidates,KAPPartyCandidates,IndependentsCandidates,LCQPartyCandidates, FFPCandidates,DLPCandidates,demCandidates} from '../lib/orderBD'
 const MainForm: React.FC<MainFormProps> = ({setShowElectoratesView,electorate,setElectorate,reps,setReps}) => {
 const [data,setData] = useState({ postcode:'' , state: 'qlds' })
+function transformData (data,party) {
+  let lenghtData = Object.values(data).length
+  let payload = new Array()
+ for (let index = 0; index < lenghtData; index++) {
+    payload.push({party: party, name:  Object.values(data)[index], Electorate: Object.keys(data)[index]}) 
+    }
+    console.log(payload)
+    return payload
+}
+const go = (e: FormEvent  <HTMLInputElement>) => {
+  e.preventDefault();
+  const test = transformData(LaborPartyCandidates,'Labor')
+}
   const click = async (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const {postcode,state}= data
@@ -13,6 +27,8 @@ const [data,setData] = useState({ postcode:'' , state: 'qlds' })
     if(checkNumber(postcode) === true ) {
       const request = await getElectoratesByCp(postcode, state)
       const payload: Electorate[] = request
+      const getRepsData = await getRepsByElectorate(payload)
+      console.log(getRepsData)
       const data = await checkElectorateAmount(payload, setShowElectoratesView,setElectorate)
     }
     if(checkLetter(postcode)=== true ) {
