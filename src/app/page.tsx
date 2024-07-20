@@ -10,22 +10,40 @@ const Home: React.FC = () => {
   const [reps, setReps] = useState<Reps[]>([]);
   const [showElectoratesView,setShowElectoratesView] = useState(false)
   const [showRepsView,setShowRepsView] = useState(false)
-  const [showMainForm,setShowMainForm] = useState(false)
+  const [showMainForm,setShowMainForm] = useState(true)
 
 
   return (
-    <main>
-      <MainForm 
-      showElectoratesView={showElectoratesView}
-      setShowElectoratesView={setShowElectoratesView}
-      electorate={electorate}
-      setElectorate={setElectorate} 
-      reps={reps}
-      setReps={setReps}
+    <main >
+      {
+      showMainForm && 
+      <MainForm
+        setShowMainForm={setShowMainForm}
+        showElectoratesView={showElectoratesView}
+        setShowElectoratesView={setShowElectoratesView}
+        electorate={electorate}
+        setElectorate={setElectorate} 
+        reps={reps}
+        setReps={setReps}
       />
-      {showElectoratesView && <ElectoratesView electorate={electorate}/>}
-      {showRepsView && <RepsView/>}
+      }
+      {
+        showElectoratesView && 
+        <ElectoratesView 
+          electorate={electorate} 
+          setShowRepsView={setShowRepsView} 
+          setShowElectoratesView={setShowElectoratesView}
+      />
+      }
 
+      {
+        showRepsView && 
+        <RepsView
+        reps={reps}
+        
+        />
+      }
+      
     </main>
   );
 }

@@ -11,14 +11,16 @@ async function getElectoratesByCp (postcode: string, state: string)  {
 }
 async function getRepsByElectorate (electorates: Electorate[]) {
         //llama al endpoint de reps by electorate
-        if(electorates.length > 1) {
+       
             const data = electorates.map( el => {
                return el.division
             })
         const payload = await fetch(`${Urls.repsByElectorate}?electorate=${[data]}`)
         const repsData = await payload.json()
         return repsData.data
-        }
+        
+        
+
 }
 function getRepsByCp (postcode: string, state: string) {
     //llama al endpoint de reps by cp

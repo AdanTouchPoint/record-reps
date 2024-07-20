@@ -6,21 +6,26 @@ export interface Electorate {
   export interface Reps {
     name: string;
     postalcode : string;
-    electorate: string;
+    electorates: string;
     email: string;
     state: string;
   }
 export interface MainFormProps {
   setShowElectoratesView: (value: boolean) => void;
-  electorate: Electorate []| undefined;
+  electorate: Electorate [] | undefined;
   setElectorate: Dispatch<SetStateAction<Electorate[]>>;
-  reps: Reps | undefined;
-  setReps:  Dispatch<SetStateAction<Reps>>;
+  reps: Reps[] | undefined;
+  setReps:  Dispatch<SetStateAction<Reps[]>>;
   }
   export interface ElectsView {
     electorate: Electorate[] | undefined;
 
     }
+    export interface CandidatesView {
+      electorate: Electorate[] | undefined;
+      reps: Reps[] | undefined
+  
+      }
   export interface SBprops {
     hideSB: boolean;
     setHideSuccess: (value: boolean) => void;

@@ -11,16 +11,21 @@ function checkBoth(string: string): boolean {
     const checkNumber = /\d/.test(string);
     return checkLetter && checkNumber;
 }
-async function checkElectorateAmount(data: Electorate[], setShowElectoratesView, setElectorate) {
+async function checkElectorateAmount(data: Electorate[], setShowElectoratesView, setElectorate, setShowMainForm,setReps,respData) {
     console.log(data)
     if(data.length > 1) {
       //mostrar vista de electorados
+      setShowMainForm(false)
       setElectorate(data)
       setShowElectoratesView(true)
+      
     }
     if(data.length === 1) {
+        setReps(respData)
+        setShowMainForm(false)
         //getrepsby elect
         //mostrar vista de reps
+        setShowElectoratesView(true)
     }
 }
 
