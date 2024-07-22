@@ -8,7 +8,7 @@ import {
   checkElectorateAmount,
 } from "../lib/helpers";
 import {
-  getRepsByCp,
+  getReps,
   getRepsByElectorate,
   getElectoratesByCp,
 } from "../lib/petitions";
@@ -60,7 +60,6 @@ const MainForm: React.FC<MainFormProps> = ({
       const request = await getElectoratesByCp(postcode, state);
       const payload: Electorate[] = request;
       const getRepsData: Reps = await getRepsByElectorate(payload);
-      console.log(getRepsData);
       setReps(getRepsData)
       const data = await checkElectorateAmount(
         payload,
@@ -71,6 +70,10 @@ const MainForm: React.FC<MainFormProps> = ({
       );
     }
     if (checkLetter(postcode) === true) {
+      const getRepsData: Reps = await getReps(postcode);
+      setShowMainForm(false)
+      setReps(getRepsData)
+      setShowRepsView(true)
     }
   };
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {

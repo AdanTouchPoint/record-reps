@@ -37,7 +37,6 @@ const Home: React.FC = () => {
           setShowElectoratesView={setShowElectoratesView}
       />
       }
-
       {
         showRepsView && 
         <RepsView

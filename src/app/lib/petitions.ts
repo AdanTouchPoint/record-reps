@@ -22,7 +22,10 @@ async function getRepsByElectorate (electorates: Electorate[]) {
         
 
 }
-function getRepsByCp (postcode: string, state: string) {
+async function getReps(electorate: string) {
     //llama al endpoint de reps by cp
+    const payload = await fetch(`${Urls.repsByElectorate}?electorate=${electorate}`)
+    const repsData = await payload.json()
+    return repsData.data
 }
-export { getElectoratesByCp, getRepsByElectorate, getRepsByCp }
+export { getElectoratesByCp, getRepsByElectorate, getReps }
