@@ -5,11 +5,12 @@ export interface Electorate {
   }
   export interface Reps {
     name: string;
-    postalcode : string;
+    labelpostcode : string;
     electorates: string;
     email: string;
     state: string;
   }
+
 export interface MainFormProps {
   setShowMainForm: (value: boolean) => void;
   setShowElectoratesView: (value: boolean) => void;
@@ -22,6 +23,8 @@ export interface MainFormProps {
     setShowRepsView: (value: boolean) => void;
     setShowElectoratesView: (value: boolean) => void;
     setShowMainForm: (value: boolean) => void;
+    setElectorate: Dispatch<SetStateAction<Electorate[]>>;
+    setPostcode: Dispatch<SetStateAction<String>>;
     }
     export interface CandidatesView {
       electorate: Electorate[] | undefined;
@@ -29,6 +32,7 @@ export interface MainFormProps {
       setShowRepsView: (value: boolean) => void;
       setShowElectoratesView: (value: boolean) => void;
       setShowMainForm: (value: boolean) => void;
+      postcode: string;
       }
   export interface SBprops {
     hideSB: boolean;

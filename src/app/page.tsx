@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   const [showElectoratesView,setShowElectoratesView] = useState(false)
   const [showRepsView,setShowRepsView] = useState(false)
   const [showMainForm,setShowMainForm] = useState(true)
+  const [postcode,setPostcode] = useState('')
 
 
   return (
@@ -32,6 +33,8 @@ const Home: React.FC = () => {
           setShowRepsView={setShowRepsView} 
           setShowElectoratesView={setShowElectoratesView}
           setShowMainForm={setShowMainForm}
+          setElectorate={setElectorate}
+          setPostcode={setPostcode}
       />
       }
       {
@@ -42,6 +45,7 @@ const Home: React.FC = () => {
         setShowRepsView={setShowRepsView}
         setShowElectoratesView={setShowElectoratesView}
         setShowMainForm={setShowMainForm}
+        postcode={postcode}
         />
       }
       
