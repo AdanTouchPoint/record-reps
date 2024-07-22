@@ -25,11 +25,13 @@ const Home: React.FC = () => {
         setElectorate={setElectorate} 
         reps={reps}
         setReps={setReps}
+        setShowRepsView={setShowRepsView}
       />
       }
       {
         showElectoratesView && 
-        <ElectoratesView 
+        <ElectoratesView
+          setReps={setReps}
           electorate={electorate} 
           setShowRepsView={setShowRepsView} 
           setShowElectoratesView={setShowElectoratesView}

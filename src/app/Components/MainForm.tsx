@@ -31,6 +31,7 @@ const MainForm: React.FC<MainFormProps> = ({
   setElectorate,
   reps,
   setReps,
+  setShowRepsView
 }) => {
   const [data, setData] = useState({ postcode: "", state: "qlds" });
   function transformData(data, party) {
@@ -60,13 +61,13 @@ const MainForm: React.FC<MainFormProps> = ({
       const payload: Electorate[] = request;
       const getRepsData: Reps = await getRepsByElectorate(payload);
       console.log(getRepsData);
+      setReps(getRepsData)
       const data = await checkElectorateAmount(
         payload,
         setShowElectoratesView,
         setElectorate,
         setShowMainForm,
-        setReps,
-        getRepsData
+        setShowRepsView
       );
     }
     if (checkLetter(postcode) === true) {

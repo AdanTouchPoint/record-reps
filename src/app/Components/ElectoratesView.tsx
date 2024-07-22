@@ -6,6 +6,7 @@ import { getRepsByCp, getRepsByElectorate, getElectoratesByCp } from '../lib/pet
 const ElectoratesView : React.FC<ElectsView> = ({electorate,setShowRepsView,setShowElectoratesView }) => {
 const click= ( e: FormEvent<HTMLInputElement> ) => {
 e.preventDefault();
+setShowRepsView()
 //set Rep to show in repView
 setShowElectoratesView(false)
 //show repView
@@ -16,7 +17,7 @@ const renderElements = () => {
         <span  className='list-mp-row' key={index}>
             <label>Electorate:</label> <p>{el.division}</p>
             <label>PostalCode:</label> <p>{el.postcode}</p>
-            <button onClick={click}>Select</button>
+            <button value={el.postcode} onClick={click}>Select</button>
         </span>
     ))
 }
