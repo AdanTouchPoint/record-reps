@@ -1,12 +1,19 @@
 "use client";
 import React,{FormEvent, useState} from 'react';
-//import {  } from '../lib/interfaces';
-import { checkNumber,checkBoth,checkLetter,checkElectorateAmount } from '../lib/helpers';
-import { getRepsByCp, getRepsByElectorate, getElectoratesByCp } from '../lib/petitions';
 import { CandidatesView } from '../lib/interfaces';
-const RepsView : React.FC<CandidatesView> = ({electorates,reps}) => {
+const RepsView : React.FC<CandidatesView> = ({electorate,reps,setShowRepsView,setShowElectoratesView,setShowMainForm}) => {
     const click= () =>{
         console.log('Click')
+    }
+    const back= ( e: FormEvent<HTMLInputElement>)=> {
+        e.preventDefault();
+        if(electorate?.length === 0 ) {
+            setShowRepsView(false)
+            setShowMainForm(true)
+            return
+        }
+        setShowRepsView(false)
+        setShowElectoratesView(true)
     }
     const renderElements = () => {
         return reps?.map( (el, index) => (
@@ -19,6 +26,7 @@ const RepsView : React.FC<CandidatesView> = ({electorates,reps}) => {
     }
 return (
 <div className={"contenedor main-form-flex-container buttons-list-container list-container"}>
+<button onClick={back}>back</button>
 <p>HELOO</p>
 <div>
 {renderElements()}

@@ -27,9 +27,7 @@ import {
 const MainForm: React.FC<MainFormProps> = ({
   setShowMainForm,
   setShowElectoratesView,
-  electorate,
   setElectorate,
-  reps,
   setReps,
   setShowRepsView
 }) => {

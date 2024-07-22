@@ -19,11 +19,8 @@ const Home: React.FC = () => {
       showMainForm && 
       <MainForm
         setShowMainForm={setShowMainForm}
-        showElectoratesView={showElectoratesView}
         setShowElectoratesView={setShowElectoratesView}
-        electorate={electorate}
         setElectorate={setElectorate} 
-        reps={reps}
         setReps={setReps}
         setShowRepsView={setShowRepsView}
       />
@@ -31,17 +28,20 @@ const Home: React.FC = () => {
       {
         showElectoratesView && 
         <ElectoratesView
-          setReps={setReps}
           electorate={electorate} 
           setShowRepsView={setShowRepsView} 
           setShowElectoratesView={setShowElectoratesView}
+          setShowMainForm={setShowMainForm}
       />
       }
       {
         showRepsView && 
         <RepsView
+        electorate={electorate}
         reps={reps}
-        
+        setShowRepsView={setShowRepsView}
+        setShowElectoratesView={setShowElectoratesView}
+        setShowMainForm={setShowMainForm}
         />
       }
       

@@ -11,20 +11,24 @@ export interface Electorate {
     state: string;
   }
 export interface MainFormProps {
+  setShowMainForm: (value: boolean) => void;
   setShowElectoratesView: (value: boolean) => void;
-  electorate: Electorate [] | undefined;
   setElectorate: Dispatch<SetStateAction<Electorate[]>>;
-  reps: Reps[] | undefined;
   setReps:  Dispatch<SetStateAction<Reps[]>>;
+  setShowRepsView: (value: boolean) => void;
   }
   export interface ElectsView {
     electorate: Electorate[] | undefined;
-
+    setShowRepsView: (value: boolean) => void;
+    setShowElectoratesView: (value: boolean) => void;
+    setShowMainForm: (value: boolean) => void;
     }
     export interface CandidatesView {
       electorate: Electorate[] | undefined;
-      reps: Reps[] | undefined
-  
+      reps: Reps[] | undefined;
+      setShowRepsView: (value: boolean) => void;
+      setShowElectoratesView: (value: boolean) => void;
+      setShowMainForm: (value: boolean) => void;
       }
   export interface SBprops {
     hideSB: boolean;
