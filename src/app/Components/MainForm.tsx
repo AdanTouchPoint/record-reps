@@ -49,8 +49,7 @@ const MainForm: React.FC<MainFormProps> = ({
     e.preventDefault();
     const test = transformData(LaborPartyCandidates, "Labor");
   };
-  const click = async (e: FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const click = async () => {
     const { postcode, state } = data;
     if (checkBoth(postcode) === true) {
     }

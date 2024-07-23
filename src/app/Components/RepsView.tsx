@@ -1,12 +1,9 @@
 "use client";
-import React,{FormEvent, useState} from 'react';
+import React,{useState} from 'react';
 import { CandidatesView } from '../lib/interfaces';
 const RepsView : React.FC<CandidatesView> = ({electorate,reps,setShowRepsView,setShowElectoratesView,setShowMainForm, postcode}) => {
-    const click= () =>{
-        console.log('Click')
-    }
-    const back= ( e: FormEvent<HTMLInputElement>)=> {
-        e.preventDefault();
+
+    const back= ()=> {
         if(electorate?.length === 0 ) {
             setShowRepsView(false)
             setShowMainForm(true)

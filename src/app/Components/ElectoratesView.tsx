@@ -1,18 +1,17 @@
 "use client";
-import React,{FormEvent, useState} from 'react';
+import React,{MouseEvent, MouseEventHandler, useState} from 'react';
 import {ElectsView} from '../lib/interfaces';
 
 const ElectoratesView : React.FC<ElectsView> = ({electorate,setShowRepsView,setShowElectoratesView,setShowMainForm, setElectorate,setPostcode }) => {
-const click= ( e: FormEvent<HTMLInputElement> ) => {
+const click= ( e:  MouseEvent<HTMLButtonElement> ) => {
 e.preventDefault();
-setPostcode((e.target as HTMLInputElement).value)
+setPostcode((e.target as HTMLButtonElement).value)
 //set Rep to show in repView
 setShowElectoratesView(false)
 //show repView
 setShowRepsView(true)
 }
-const back= ( e: FormEvent<HTMLInputElement>)=> {
-    e.preventDefault();
+const back= (): void => {
     setShowMainForm(true)
     setElectorate([])
     setShowElectoratesView(false)
