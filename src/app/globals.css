@@ -24,7 +24,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+/*----------------------------- boton back ---------------------------------*/
 
+/* Estilos del botón circular */
+.circular-button {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff; /* Color de fondo */
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilos de la flecha */
+.arrow-left {
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #293549; /* Color de la flecha */
+  border-left: 2px solid #293549; /* Color de la flecha */
+  transform: rotate(-45deg);
+  position: absolute;
+}
+
+/* Efectos de hover */
+.circular-button:hover {
+  background-color: #ffffff00; /* Color de fondo en hover */
+}
+
+.circular-button:hover .arrow-left {
+  border-color: #ffffff; /* Color de la flecha en hover */
+}
+/*----------------------------- rowsCandidates-----------------------------*/
+.row-candidates{
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+}
 /*----------------------------- MainForm---------------------------------- */
 
 .main-texts-color{
@@ -49,54 +89,11 @@ border: 1px solid var(--main-option-text-and-border-color);
   min-height: 70px;
   color: var(--main-option-text-and-border-color);
 }
-.form-control:focus{
-  color: var(--main-option-text-and-border-color);
-  background: var(--main-inputs-bg-color);
-  border-color: var(--main-option-text-and-border-color);
-  box-shadow: none;
-  font-size: 18px;
-}
-.links-checkboxes-color, .links-checkboxes-color:hover {
-  
-  color: var(--links-checkbox-somebtns-color);
-  text-transform: capitalize;
-}
-.link-simulation{
-text-decoration: underline;
-font-size: 24px;
-}
-.link-simulation:hover {
- cursor: pointer;
- 
-}
+
 /* ----------------------------End of Mainform------------------------------------------------------- */
 /* ----------------------------List------------------------------------------------------------------ */
-.do-again-btn{
-  color: var(--links-checkbox-somebtns-color);
-font-family: Inter;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
 
-.representative-position{
-  color: var(--main-texts-color);
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
 
-.representative-name{
-  color: var(--main-option-text-and-border-color);
-  font-family: Inter;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0px;
-}
 
 .contenedor{
   max-width: 1140px;
@@ -123,7 +120,7 @@ line-height: normal;
   padding: 35px;
   max-width: 1150px;
 }
-.form-container, .emailContainer{
+.form-container, .emailContainer, .list-container{
   background: var(--main-bg-color);
   max-width: 1150px;
   height: 100%;
@@ -326,16 +323,17 @@ display: flex;
   row-gap: 25px;
 }
 .list-mp-row{
-  border-radius: 5px;
+  border-radius: 15px;
   border: 1px solid var(--main-option-text-and-border-color);
-  background: var(--main-inputs-bg-color);
-  color: var(--main-option-text-and-border-color);
+  background: white;
+  color: black;
   display: flex;
-
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   padding: 15px 24px 15px 32px;
   text-transform: capitalize;
+  margin:15px;
 }
 .label-ia-prompt{
   color: var(--main-texts-color);
@@ -470,7 +468,7 @@ font-weight: 700;
 line-height: normal;
 }
 .main-text-instruction{
-  font-size: 20px;
+  font-size: 15px;
   font-family: Inter;
   font-size: 30px;
   font-style: normal;

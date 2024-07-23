@@ -78,8 +78,8 @@ const MainForm: React.FC<MainFormProps> = ({
     return setData({ ...data, postcode: (e.target as HTMLInputElement).value });
   };
   return (
-    <div className={"contenedor "}>
-      <div className={"form-container container container-content"}>
+    <div className={"contenedor container-content  "}>
+      <div className={"form-container container "}>
         <h1 className="main-texts-color main-text-title">
         Vote for life!
         </h1>

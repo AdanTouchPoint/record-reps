@@ -9,6 +9,7 @@ export interface Electorate {
     electorates: string;
     email: string;
     state: string;
+    party: string;
   }
 
 export interface MainFormProps {
