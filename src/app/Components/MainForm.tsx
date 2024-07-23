@@ -12,7 +12,7 @@ import {
   getRepsByElectorate,
   getElectoratesByCp,
 } from "../lib/petitions";
-import {
+/*import {
   LaborPartyCandidates,
   LNPCandidates,
   greensPartyCandidate,
@@ -23,7 +23,7 @@ import {
   FFPCandidates,
   DLPCandidates,
   demCandidates,
-} from "../lib/orderBD";
+} from "../lib/orderBD";*/
 const MainForm: React.FC<MainFormProps> = ({
   setShowMainForm,
   setShowElectoratesView,
@@ -31,8 +31,8 @@ const MainForm: React.FC<MainFormProps> = ({
   setReps,
   setShowRepsView
 }) => {
-  const [data, setData] = useState({ postcode: "", state: "qlds" });
-  function transformData(data, party) {
+ const [data, setData] = useState({ postcode: "", state: "qlds" });
+/*  function transformData(data, party) {
     let lenghtData = Object.values(data).length;
     let payload = new Array();
     for (let index = 0; index < lenghtData; index++) {
@@ -48,7 +48,7 @@ const MainForm: React.FC<MainFormProps> = ({
   const go = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const test = transformData(LaborPartyCandidates, "Labor");
-  };
+  };*/
   const click = async () => {
     const { postcode, state } = data;
     if (checkBoth(postcode) === true) {
