@@ -84,7 +84,7 @@ const MainForm: React.FC<MainFormProps> = ({
         Vote for life!
         </h1>
         <p className="main-texts-color main-text-instruction">
-          Learn your candidates' stance on life in the upcoming QLD election by
+          Learn your candidates stance on life in the upcoming QLD election by
           entering your postcode or electorate below.
         </p>
         <form id="form">
