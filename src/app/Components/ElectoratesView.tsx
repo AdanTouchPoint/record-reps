@@ -5,7 +5,7 @@ import {ElectsView} from '../lib/interfaces';
 const ElectoratesView : React.FC<ElectsView> = ({electorate,setShowRepsView,setShowElectoratesView,setShowMainForm, setElectorate,setPostcode }) => {
 const click= ( e: FormEvent<HTMLInputElement> ) => {
 e.preventDefault();
-setPostcode(e.target.value)
+setPostcode((e.target as HTMLInputElement).value)
 //set Rep to show in repView
 setShowElectoratesView(false)
 //show repView
