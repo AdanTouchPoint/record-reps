@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   const [showElectoratesView,setShowElectoratesView] = useState(false)
   const [showRepsView,setShowRepsView] = useState(false)
   const [showMainForm,setShowMainForm] = useState(true)
-  const [postcode,setPostcode] = useState('')
+  const [postcode,setPostcode] = useState<any>('')
 
 
   return (
