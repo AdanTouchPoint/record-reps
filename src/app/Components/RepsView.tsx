@@ -14,7 +14,7 @@ const RepsView : React.FC<CandidatesView> = ({electorate,reps,setShowRepsView,se
     }
     console.log(reps)
     const renderElements = () => {
-        return reps?.map( (el, index) => (
+        return reps?.flat().map( (el, index) => (
             <span  className='list-mp-row' key={index}>
                 <h3 className='row-candidates'>{el.name}</h3>
                 <span className='row-candidates'><label>Party:</label> <span>{el.party}</span></span>

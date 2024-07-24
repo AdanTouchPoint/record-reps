@@ -23,9 +23,7 @@ const renderElements = () => {
                 <h3>{el.division}</h3>
                 <div className="electorate-info-body">
                     <label>PostalCode:</label> <p>{el.postcode}</p>
-
                 </div>
-
             </div>
                 <span> <button className="select-button-elec"value={el.division} onClick={click}>Select</button></span>
         </div>

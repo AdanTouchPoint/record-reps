@@ -78,7 +78,6 @@ const MainForm: React.FC<MainFormProps> = ({
       const getRepsData: Reps = await getReps(postcode);
       setShowMainForm(false)
       setReps([getRepsData])
-      
       setShowRepsView(true)
       return;
     }
