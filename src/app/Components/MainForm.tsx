@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { KeyboardEvent, FormEvent, useState } from "react";
 import { Electorate, MainFormProps, Reps } from "../lib/interfaces";
 import {
   checkNumber,
@@ -35,6 +35,7 @@ const MainForm: React.FC<MainFormProps> = ({
 }) => {
  const [data, setData] = useState({ postcode: "", state: "qlds" });
  const [error, setError] = useState(false)
+ const [noDataErr,setNoDataErr] = useState(false) 
 /*  function transformData(data, party) {
     let lenghtData = Object.values(data).length;
     let payload = new Array();
@@ -55,16 +56,17 @@ const MainForm: React.FC<MainFormProps> = ({
   
   const click = async () => {
     const { postcode, state } = data;
+    if(postcode === '') return setNoDataErr(true)
     if (checkBoth(postcode) === true) {
       setError(true);
       return;
     }
     if (checkNumber(postcode) === true) {
       const request = await getElectoratesByCp(postcode, state);
+      if(request.length === 0 ) return setNoDataErr(true)
       const payload: Electorate[] = request;
       const getRepsData: [Reps] = await getRepsByElectorate(payload);
       setReps(getRepsData)
-     
       const data = await checkElectorateAmount(
         payload,
         setShowElectoratesView,
@@ -76,6 +78,7 @@ const MainForm: React.FC<MainFormProps> = ({
     }
     if (checkLetter(postcode) === true) {
       const getRepsData: Reps = await getReps(postcode);
+      if(getRepsData.length === 0 ) return setNoDataErr(true)
       setShowMainForm(false)
       setReps([getRepsData])
       setShowRepsView(true)
@@ -85,13 +88,27 @@ const MainForm: React.FC<MainFormProps> = ({
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
     return setData({ ...data, postcode: (e.target as HTMLInputElement).value });
   };
-
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    console.log(event.key)
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      click();
+    }
+  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    click();
+  };
   const closeError = ()=>{
     setError(false)
+    setNoDataErr(false)
   }
   return (
     <>
       {error && <ErrorPopUp message={'Please enter a postalcode or electorate, but not both at same time.'}
+        onClose={closeError}
+      />}
+      {noDataErr && <ErrorPopUp message={'No Candidates or electorates found, please enter a correct postalcode or electorate.'}
         onClose={closeError}
       />}
       <div className={"contenedor container-content  "}>
@@ -103,7 +120,7 @@ const MainForm: React.FC<MainFormProps> = ({
             Learn your candidates stance on life in the upcoming QLD election by
             entering your postcode or electorate below.
           </p>
-          <form id="form" className="search-form">
+          <form onSubmit={handleSubmit} id="form" className="search-form">
             
               <input
                 className="u-full-width input-color main-form-inputs main-search-input"
@@ -112,10 +129,11 @@ const MainForm: React.FC<MainFormProps> = ({
                 placeholder="e.g. 2000 or Ben Brown"
                 required
                 onChange={handleOnChange}
+                onKeyDown={handleKeyDown}
               />
               <button
-                  className={" capitalize-style find-btn-main-form main-search-button"}
-                  onClick={click}
+                className={" capitalize-style find-btn-main-form main-search-button"}
+                onClick={click}
                 id="button"
                 type="button"
               >

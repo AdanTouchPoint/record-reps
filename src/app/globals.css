@@ -113,6 +113,7 @@ border: 1px solid var(--main-option-text-and-border-color);
 }
 .main-search-button{
   border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
 }
 .search-form{
   width: 100%;
