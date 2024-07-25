@@ -77,7 +77,7 @@ const MainForm: React.FC<MainFormProps> = ({
       return;
     }
     if (checkLetter(postcode) === true) {
-      const getRepsData: Reps[]  = await getReps(postcode);
+      const getRepsData: Reps[]  = await getReps(postcode.toUpperCase());
       if(getRepsData.length === 0 ) return setNoDataErr(true)
       setShowMainForm(false)
       setReps(getRepsData)
@@ -86,7 +86,7 @@ const MainForm: React.FC<MainFormProps> = ({
     }
   };
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
-    return setData({ ...data, postcode: (e.target as HTMLInputElement).value });
+    return setData({ ...data, postcode: (e.target as HTMLInputElement).value});
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     console.log(event.key)
