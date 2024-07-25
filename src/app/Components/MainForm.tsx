@@ -77,10 +77,10 @@ const MainForm: React.FC<MainFormProps> = ({
       return;
     }
     if (checkLetter(postcode) === true) {
-      const getRepsData: Reps = await getReps(postcode);
+      const getRepsData: Reps[]  = await getReps(postcode);
       if(getRepsData.length === 0 ) return setNoDataErr(true)
       setShowMainForm(false)
-      setReps([getRepsData])
+      setReps(getRepsData)
       setShowRepsView(true)
       return;
     }
