@@ -333,6 +333,7 @@ display: flex;
   background: var(--links-checkbox-somebtns-color);
   color: var(--main-bg-color);
   font-weight: 700;
+
 }
 .list-notweeter-text{
   text-align: center;
@@ -611,15 +612,16 @@ h3{
 }
 
 .select-button-elec{
-  background-color: var(--main-inputs-bg-color);
-  color: var(--main-option-text-and-border-color);
+  background-color: var(--links-checkbox-somebtns-color);
+  color:var(--back-btns-bg-color);
   font-size: 18px;
-  border: 1px solid var(--main-option-text-and-border-color);
+  border:2px solid var(--back-btns-bg-color);
   border-radius:5px;
   padding: 5px 30px;
+  cursor: pointer;
 }
 .select-button-elec:hover{
-  background-color: var(--links-checkbox-somebtns-color);
+  background-color: var(--main-inputs-bg-color);
   color:var(--back-btns-bg-color);
   border:2px solid var(--back-btns-bg-color);
 }
