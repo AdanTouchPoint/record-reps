@@ -333,7 +333,6 @@ display: flex;
   background: var(--links-checkbox-somebtns-color);
   color: var(--main-bg-color);
   font-weight: 700;
-
 }
 .list-notweeter-text{
   text-align: center;

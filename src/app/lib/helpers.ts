@@ -12,7 +12,6 @@ function checkBoth(string: string): boolean {
     return checkLetter && checkNumber;
 }
 async function checkElectorateAmount(data: Electorate[], setShowElectoratesView, setElectorate, setShowMainForm, setShowRepsView) {
-    console.log(data)
     if(data.length > 1) {
       //mostrar vista de electorados
       setShowMainForm(false)

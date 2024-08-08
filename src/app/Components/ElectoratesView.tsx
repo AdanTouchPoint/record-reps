@@ -35,11 +35,10 @@ return (
     <div className="head-content">
         <button className='circular-button' onClick={back}><span className='arrow-left'></span></button>
         <h1 className="main-texts-color main-text-title" >Select your electorate</h1>
-
     </div>
 <h2 className="main-texts-color main-text-instruction" >Electorates:</h2>
 {renderElements()}
-<p className="main-texts-color main-text-instruction" >Can’t find your electorate? Go back to the previous page and
+<p className="main-texts-color main-text-instruction" >Cant find your electorate? Go back to the previous page and
 try again. Make sure your postcode it correct.</p>
 </div>
 </div>

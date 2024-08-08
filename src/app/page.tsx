@@ -15,14 +15,13 @@ const Home: React.FC = () => {
   const [showMainForm,setShowMainForm] = useState(true)
   const [postcode,setPostcode] = useState<any>('')
 
-
   return (
     <main >
       <div className='logo' >
         <Image className='logo-img'
           sizes='100vh'
           src={logo}
-          alt="Picture of the author"
+          alt="CherishLife Logo"
         />
       </div>
       {
