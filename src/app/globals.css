@@ -8,12 +8,12 @@ body {
     sans-serif !important; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   --main-bg-color: linear-gradient(180deg, #293549 0%, #222344 100%);
+   --main-bg-color: #93459a;
   --main-texts-color: white;
-  --main-inputs-bg-color: #374160;
+  --main-inputs-bg-color: #ffffff;
   --main-option-text-and-border-color:#B1BFED;
   --links-checkbox-somebtns-color: #47C8FE;
-  --primary-btn-bg-color: #FA1500;
+  --primary-btn-bg-color: #38b6ff;
   --primary-btn-font-color:#fff;
   --back-btns-bg-color: #2E3752;
   --back-btns-font-color: #fff; 
@@ -33,6 +33,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+/*----------------------------- logo ----------------------------------------*/
+.logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 50px;
+}
+.logo-img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
 /*----------------------------- boton back ---------------------------------*/
 
 /* Estilos del botón circular */
@@ -534,7 +547,7 @@ line-height: normal;
 }
 .instruction-text, .main-text-title{
 /* font-family: 'Inter'; */
-font-size: 40px;
+font-size: 75px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
@@ -659,7 +672,7 @@ h3{
   
   .main-text-title{
     /* font-family: 'Inter'; */
-    font-size: 25px;
+    font-size: 75px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;

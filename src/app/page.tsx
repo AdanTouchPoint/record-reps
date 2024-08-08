@@ -4,6 +4,8 @@ import MainForm  from "./Components/MainForm";
 import ElectoratesView from "./Components/ElectoratesView";
 import RepsView from './Components/RepsView';
 import { Electorate, Reps } from './lib/interfaces';
+import Image from 'next/image'
+import logo from './assets/logoCL.png'
 
 const Home: React.FC = () => {
   const [electorate,setElectorate]= useState<Electorate[]>([]);
@@ -16,6 +18,13 @@ const Home: React.FC = () => {
 
   return (
     <main >
+      <div className='logo' >
+        <Image className='logo-img'
+          sizes='100vh'
+          src={logo}
+          alt="Picture of the author"
+        />
+      </div>
       {
       showMainForm && 
       <MainForm
