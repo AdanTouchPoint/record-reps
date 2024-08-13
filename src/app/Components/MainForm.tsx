@@ -11,6 +11,7 @@ import {
   getReps,
   getRepsByElectorate,
   getElectoratesByCp,
+  createLeads
 } from "../lib/petitions";
 /*import {
   LaborPartyCandidates,
@@ -33,7 +34,19 @@ const MainForm: React.FC<MainFormProps> = ({
   setReps,
   setShowRepsView,
 }) => {
-  const [data, setData] = useState({ postcode: "", state: "qlds" });
+  const [data, setData] = useState({ 
+    postcode: "", 
+    state: "qlds", 
+    fristName:"NA",
+    representative: "NA",
+    emailMessage: "NA",
+    city: "NA",
+    party: "NA",
+    clientId: "636dadcf2626f92aade6664a",
+    subject: "NA",
+    sended: "NA",
+    emailData:''
+    });
   const [error, setError] = useState(false);
   const [noDataErr, setNoDataErr] = useState(false);
   /*  function transformData(data, party) {
@@ -55,6 +68,7 @@ const MainForm: React.FC<MainFormProps> = ({
   };*/
 
   const click = async () => {
+    console.log(data)
     const { postcode, state } = data;
     if (postcode === "") return setNoDataErr(true);
     if (checkBoth(postcode) === true) {
@@ -67,13 +81,14 @@ const MainForm: React.FC<MainFormProps> = ({
       const payload: Electorate[] = request;
       const getRepsData: [Reps] = await getRepsByElectorate(payload);
       setReps(getRepsData);
-      const data = await checkElectorateAmount(
+      const req = await checkElectorateAmount(
         payload,
         setShowElectoratesView,
         setElectorate,
         setShowMainForm,
         setShowRepsView
       );
+      createLeads(data)
       return;
     }
     if (checkLetter(postcode) === true) {
@@ -82,11 +97,12 @@ const MainForm: React.FC<MainFormProps> = ({
       setShowMainForm(false);
       setReps(getRepsData);
       setShowRepsView(true);
+      createLeads(data)
       return;
     }
   };
   const handleOnChange = (e: FormEvent<HTMLInputElement>) => {
-    return setData({ ...data, postcode: (e.target as HTMLInputElement).value });
+    return setData({ ...data, [(e.target as HTMLInputElement).name] : (e.target as HTMLInputElement).value });
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -131,7 +147,16 @@ const MainForm: React.FC<MainFormProps> = ({
             <input
               className="u-full-width input-color main-form-inputs main-search-input"
               type="text"
-              name="name"
+              name="emailData"
+              placeholder="e-mail"
+              required
+              onChange={handleOnChange}
+              onKeyDown={handleKeyDown}
+            />
+            <input
+              className="u-full-width input-color main-form-inputs main-search-input"
+              type="text"
+              name="postcode"
               placeholder="e.g. 2000 or Ben Brown"
               required
               onChange={handleOnChange}

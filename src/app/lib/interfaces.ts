@@ -11,7 +11,19 @@ export interface Reps {
   state: string;
   party: string;
 }
-
+export interface Data {
+    postcode: string, 
+    state: string, 
+    fristName:string,
+    representative: string,
+    emailMessage: string,
+    city: string,
+    party: string,
+    clientId: string,
+    subject: string,
+    sended: string,
+    emailData:string
+}
 export interface MainFormProps {
   setShowMainForm: (value: boolean) => void;
   setShowElectoratesView: (value: boolean) => void;
