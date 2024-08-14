@@ -49,6 +49,9 @@ const MainForm: React.FC<MainFormProps> = ({
     });
   const [error, setError] = useState(false);
   const [noDataErr, setNoDataErr] = useState(false);
+  const [noEmailErr, setNoEmailErr] = useState(false)
+  const [noPostcodeErr,setNoPostcodeErr] = useState(false)
+  const [empityErr,setEmpityErr] = useState(false)
   /*  function transformData(data, party) {
     let lenghtData = Object.values(data).length;
     let payload = new Array();
@@ -70,7 +73,9 @@ const MainForm: React.FC<MainFormProps> = ({
   const click = async () => {
     console.log(data)
     const { postcode, state,emailData } = data;
-    if (postcode === "" || emailData === "") return setNoDataErr(true);
+    if(emailData === "" && postcode === "" ) return setEmpityErr(true)
+    if(postcode === "") return setNoPostcodeErr(true);
+    if(emailData === "") return setNoEmailErr(true)
     if (checkBoth(postcode) === true) {
       setError(true);
       return;
@@ -117,21 +122,48 @@ const MainForm: React.FC<MainFormProps> = ({
   const closeError = () => {
     setError(false);
     setNoDataErr(false);
+    setEmpityErr(false)
+    setNoEmailErr(false)
+    setNoPostcodeErr(false)
   };
   return (
     <>
       {error && (
         <ErrorPopUp
           message={
-            "Please enter a postalcode or electorate, but not both at same time."
+            "Please enter a postcode or electorate, but not both at same time."
           }
           onClose={closeError}
         />
       )}
-      {noDataErr && (
+     {noDataErr && (
         <ErrorPopUp
           message={
-            "No Candidates or electorates found, please enter a correct postalcode or electorate."
+            "No Candidates or electorates found, please enter a correct postcode or electorate."
+          }
+          onClose={closeError}
+        />
+      )}
+      {empityErr && (
+        <ErrorPopUp
+          message={
+            "ERROR, please add your email and your postcode or electorate before you proceed."
+          }
+          onClose={closeError}
+        />
+      )}
+      {noPostcodeErr && (
+        <ErrorPopUp
+          message={
+            "ERROR, please add your postcode or electorate before you proceed."
+          }
+          onClose={closeError}
+        />
+      )}
+      {noEmailErr && (
+        <ErrorPopUp
+          message={
+            "ERROR, please add your email before you proceed."
           }
           onClose={closeError}
         />
@@ -157,7 +189,7 @@ const MainForm: React.FC<MainFormProps> = ({
               className="u-full-width input-color main-form-inputs main-search-input"
               type="text"
               name="postcode"
-              placeholder="e.g. 2000 or Ben Brown"
+              placeholder="Postcode or Electorate"
               required
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
