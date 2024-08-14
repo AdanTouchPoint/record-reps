@@ -69,8 +69,8 @@ const MainForm: React.FC<MainFormProps> = ({
 
   const click = async () => {
     console.log(data)
-    const { postcode, state } = data;
-    if (postcode === "") return setNoDataErr(true);
+    const { postcode, state,emailData } = data;
+    if (postcode === "" || emailData === "") return setNoDataErr(true);
     if (checkBoth(postcode) === true) {
       setError(true);
       return;
