@@ -24,10 +24,10 @@ const RepsView: React.FC<CandidatesView> = ({
       <span className="list-mp-row" key={index}>
         <h3 className="row-candidates">{el.Name}</h3>
         <span className="row-candidates">
-          <label>Party:</label> <span>{el.Party}</span>
+          <label>Party:</label> <p>{el.Party}</p>
         </span>
         <span className="row-candidates">
-          <label>Postion:</label> <span>{el.Position}</span>
+          <label>Postion:</label> <p>{el.Position}</p>
         </span>
       </span>
     ));
@@ -39,10 +39,10 @@ const RepsView: React.FC<CandidatesView> = ({
       <span className="list-mp-row" key={index}>
         <h1 className="row-candidates">{el.Name}</h1>
         <span className="row-candidates">
-          <label>Party:</label> <span>{el.Party}</span>
+          <label>Party:</label> <p>{el.Party}</p>
         </span>
         <span className="row-candidates">
-          <label>Postion:</label> <span>{el.Position}</span>
+          <label>Postion:</label> <p>{el.Position}</p>
         </span>
       </span>
     ));

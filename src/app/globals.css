@@ -87,6 +87,7 @@ code {
   display: flex;
   flex-direction: row;
   padding: 15px;
+  column-gap: 5px;
 }
 
 .head-content{
