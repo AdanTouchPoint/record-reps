@@ -19,28 +19,30 @@ const RepsView: React.FC<CandidatesView> = ({
     setShowElectoratesView(true);
   };
   const renderElements = () => {
+    console.log(electorate,reps)
     return reps?.flat().map((el, index) => (
       <span className="list-mp-row" key={index}>
-        <h3 className="row-candidates">{el.name}</h3>
+        <h3 className="row-candidates">{el.Name}</h3>
         <span className="row-candidates">
-          <label>Party:</label> <span>{el.party}</span>
+          <label>Party:</label> <span>{el.Party}</span>
         </span>
         <span className="row-candidates">
-          <label>Postion:</label> <span>{el.party}</span>
+          <label>Postion:</label> <span>{el.Position}</span>
         </span>
       </span>
     ));
   };
   const renderFilterElements = (postcode: string) => {
-    const data = reps?.filter((item) => item.electorates === postcode);
+    console.log(electorate,reps)
+    const data = reps?.filter((item) => item?.Electorate === postcode);
     return data?.map((el, index) => (
       <span className="list-mp-row" key={index}>
-        <h1 className="row-candidates">{el.name}</h1>
+        <h1 className="row-candidates">{el.Name}</h1>
         <span className="row-candidates">
-          <label>Party:</label> <span>{el.party}</span>
+          <label>Party:</label> <span>{el.Party}</span>
         </span>
         <span className="row-candidates">
-          <label>Postion:</label> <span>{el.party}</span>
+          <label>Postion:</label> <span>{el.Position}</span>
         </span>
       </span>
     ));

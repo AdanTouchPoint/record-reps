@@ -82,7 +82,7 @@ const MainForm: React.FC<MainFormProps> = ({
     }
     if (checkNumber(postcode) === true) {
       const request = await getElectoratesByCp(postcode, state);
-      if (request.length === 0) return setNoDataErr(true);
+      if (request?.length === 0) return setNoDataErr(true);
       const payload: Electorate[] = request;
       const getRepsData: [Reps] = await getRepsByElectorate(payload);
       setReps(getRepsData);
@@ -98,7 +98,7 @@ const MainForm: React.FC<MainFormProps> = ({
     }
     if (checkLetter(postcode) === true) {
       const getRepsData: Reps[] = await getReps(postcode.toUpperCase());
-      if (getRepsData.length === 0) return setNoDataErr(true);
+      if (getRepsData?.length === 0) return setNoDataErr(true);
       setShowMainForm(false);
       setReps(getRepsData);
       setShowRepsView(true);
