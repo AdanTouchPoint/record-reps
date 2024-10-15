@@ -19,7 +19,6 @@ const RepsView: React.FC<CandidatesView> = ({
     setShowElectoratesView(true);
   };
   const renderElements = () => {
-    console.log(electorate,reps)
     return reps?.flat().map((el, index) => (
       <span className="list-mp-row" key={index}>
         <h3 className="row-candidates">{el.Name}</h3>
@@ -33,7 +32,6 @@ const RepsView: React.FC<CandidatesView> = ({
     ));
   };
   const renderFilterElements = (postcode: string) => {
-    console.log(electorate,reps)
     const data = reps?.filter((item) => item?.Electorate === postcode);
     return data?.map((el, index) => (
       <span className="list-mp-row" key={index}>

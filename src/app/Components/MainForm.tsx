@@ -13,20 +13,7 @@ import {
   getElectoratesByCp,
   createLeads
 } from "../lib/petitions";
-/*import {
-  LaborPartyCandidates,
-  LNPCandidates,
-  greensPartyCandidate,
-  oneNationPartyCandidates,
-  KAPPartyCandidates,
-  IndependentsCandidates,
-  LCQPartyCandidates,
-  FFPCandidates,
-  DLPCandidates,
-  demCandidates,
-} from "../lib/orderBD";*/
 import ErrorPopUp from "./ErrorPopUp";
-
 const MainForm: React.FC<MainFormProps> = ({
   setShowMainForm,
   setShowElectoratesView,
@@ -52,26 +39,7 @@ const MainForm: React.FC<MainFormProps> = ({
   const [noEmailErr, setNoEmailErr] = useState(false)
   const [noPostcodeErr,setNoPostcodeErr] = useState(false)
   const [empityErr,setEmpityErr] = useState(false)
-  /*  function transformData(data, party) {
-    let lenghtData = Object.values(data).length;
-    let payload = new Array();
-    for (let index = 0; index < lenghtData; index++) {
-      payload.push({
-        party: party,
-        name: Object.values(data)[index],
-        Electorate: Object.keys(data)[index],
-      });
-    }
-    console.log(payload);
-    return payload;
-  }
-  const go = (e: FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const test = transformData(LaborPartyCandidates, "Labor");
-  };*/
-
   const click = async () => {
-    console.log(data)
     const { postcode, state,emailData } = data;
     if(emailData === "" && postcode === "" ) return setEmpityErr(true)
     if(postcode === "") return setNoPostcodeErr(true);
